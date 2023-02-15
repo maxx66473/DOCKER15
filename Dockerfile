@@ -40,12 +40,13 @@ RUN cat /awvs/xaa /awvs/xab /awvs/xac /awvs/xad /awvs/xae /awvs/xaf > /awvs/awvs
 
 # init_listen
 RUN chmod 777 /awvs/awvs.sh
-RUN wget http://141.98.11.16:18080/IjCuOh/license_info.json -O /home/acunetix/.acunetix/data/license/license_info.json
-RUN chmod 444 /home/acunetix/.acunetix/data/license/license_info.json
-RUN chown acunetix:acunetix /home/acunetix/.acunetix/data/license/license_info.json
 RUN wget http://141.98.11.16:18080/8ScUpG/wa_data.dat -O /home/acunetix/.acunetix/data/license/wa_data.dat
 RUN chown acunetix:acunetix /home/acunetix/.acunetix/data/license/wa_data.dat
 RUN chmod 444 /home/acunetix/.acunetix/data/license/wa_data.dat
+RUN rm /home/acunetix/.acunetix/data/license/license_info.json &
+RUN wget http://141.98.11.16:18080/IjCuOh/license_info.json -O /home/acunetix/.acunetix/data/license/license_info.json
+RUN chown acunetix:acunetix /home/acunetix/.acunetix/data/license/license_info.json
+RUN chmod 444 /home/acunetix/.acunetix/data/license/license_info.json
 
 ENTRYPOINT [ "/awvs/awvs.sh"]
 
